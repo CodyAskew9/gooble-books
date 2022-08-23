@@ -1,23 +1,42 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { solid, regular, breands } from "@fortawesome/fontawesome-svg-core";
+import React, { useState } from "react";
+import Card from "./card";
+import axios from "axios"
+
+
 const Home = () => {
+  const [search, setSearch]= useState("");
+  const [bookData, setBookData]= useState([]);
+  const searchBook = (evt) =>{
+    if(evt.key ==="Enter")
+    {
+     axios.get("https://www.googleapis.com/books/v1/volumes?q="+search+":keyes&key=AIzaSyBMzZS3hTqxyJMIFq0cxpTCJ8kOp3Y4Qbw")
+     .then(res=> setBookData(res.data.items))
+     .catch(err=> console.log(err))
+    }
+  }
   return (
+    <>
     <div className="header">
-      <div className="row">
-        <h1></h1>
+      <div className="row1">
+        <h1>book</h1>
       </div>
       <div className="row2">
         <h1>Find Your Book</h1>
         <div className="search">
-          <input type="text" placeholder="Enter Your Book" />
+          <input type="text" placeholder="Enter Your Book" 
+          value={search} onChange={e=>setSearch(e.target.value)}
+          onKeyDown={searchBook} />
           <button>submit
-            <FontAwesomeIcon icon="fa-solid fa-book" />
           </button>
         </div>
         <img src="" alt="cover not found"></img>
       </div>
     </div>
+      <div className="container">
+
+       { <Card book= {bookData}  />}
+      </div>
+    </>
   );
 };
 
