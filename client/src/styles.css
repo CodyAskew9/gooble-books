@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+    --primary-color:#cbdef2;
+    --secondary-color:#1466c4;
+}
+body{
+    background-color: var(--primary-color);
+
+}
+html{
+    font-size: 75.5%;
+
+}
+.header{
+    width: 100%;
+    height: 500px;
+    color: var(--secondary-color);
+    box-sizing: 0 5px 10px var(--secondary-color);
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.row{
+    position: absolute;
+    top: 10px;
+}
+.row2{
+    position: absolute;
+    top: 10px;
+    right: 150px;
+    text-align: center;
+}
+.row2 h1{
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
