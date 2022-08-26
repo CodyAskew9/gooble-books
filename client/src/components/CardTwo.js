@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-const Card = ({ book }) => {
+const CardTwo= ({ book }) => {
     // console.log(book)
     let [checkOut, setCheckOut]= useState("")
     const checkOutBook = (evt) =>{
       if(evt.key ==="Enter"){
-        console.log(checkOut)
+        console.log(checkOutBook)
       }
     }
   return (
@@ -14,18 +14,19 @@ const Card = ({ book }) => {
         let thumbnail= item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
         return (
             <>
-          <div className="card" key={book.id} >
+          <div className="cardTwo" key={book.id} >
             <img src={thumbnail} alt="not found" />
             <div className="bottom">
               <h3 className="title">{item.volumeInfo.title}</h3>
-          <input type="text" placeholder="Enter Your Name" value={checkOut} onChange={e=> setCheckOut(e.target.value)} OnKeyDown={checkOutBook} />
-          <button>Check Out</button>
             </div>
           </div>
+              <input type="text" placeholder="Enter Your Name" value={checkOut} onChange={e=> setCheckOut(e.target.value)} onKeyDown={checkOutBook} />
+              <button>Check Out</button>
           </>
         );
       })}
     </>
   );
 };
-export default Card;
+
+export default CardTwo

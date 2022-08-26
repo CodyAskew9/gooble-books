@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "./card";
 import axios from "axios"
+import CardTwo from "./CardTwo";
 
 
 const Home = () => {
@@ -9,16 +10,18 @@ const Home = () => {
   const searchBook = (evt) =>{
     if(evt.key ==="Enter")
     {
-     axios.get("https://www.googleapis.com/books/v1/volumes?q="+search+":keyes&key=AIzaSyBMzZS3hTqxyJMIFq0cxpTCJ8kOp3Y4Qbw")
+     axios.get("https://www.googleapis.com/books/v1/volumes?q=:"+search+":keyes&key=AIzaSyBMzZS3hTqxyJMIFq0cxpTCJ8kOp3Y4Qbw")
      .then(res=> setBookData(res.data.items))
      .catch(err=> console.log(err))
     }
   }
   return (
+    
     <>
     <div className="header">
       <div className="row1">
-        <h1>book</h1>
+        <h1>"When in doubt go to the liberry" <br/>
+          -Hermione Granger</h1>
       </div>
       <div className="row2">
         <h1>Find Your Book</h1>
@@ -29,11 +32,11 @@ const Home = () => {
           <button>submit
           </button>
         </div>
-        <img src="" alt="cover not found"></img>
+        {/* <CardTwo book= {bookData} /> */}
       </div>
+      
     </div>
       <div className="container">
-
        { <Card book= {bookData}  />}
       </div>
     </>
