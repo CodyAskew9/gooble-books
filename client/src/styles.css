@@ -125,3 +125,74 @@ html {
     font-weight: bold;
     padding: 0.2rem;
 }
+.card :hover{
+  transform: scale(0.9);
+  background-color: cornflowerblue;
+}
+.overlay{
+  min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(0,0,0,0.2)) rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: center;
+justify-content: center;
+}
+.overlayInner{
+  background: white;
+  width: 700px;
+  height: 550px;
+  padding: 1.5rem;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  font-size: 1.3rem;
+
+}
+.overlayInner .close{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  outline: none;
+  border: none;
+  font-size: 17px;
+  background-color: transparent;
+}
+.overlayInner .inner-box{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center
+}
+.overlayInner .inner-box img{
+  margin-right: 20px;
+  width: 150px;
+  height: 200px;
+
+}
+.overlayInner .inner-box h3{
+  margin-top: 10px;
+  color: #945dcf;
+}
+.overlayInner .inner-box h4{
+  color:var(--primary-color);
+}
+.overlayInner .inner-box button{
+  outline: none;
+  border: none;
+  width: 100px;
+  border-radius: 5px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: bold;
+  padding: 0.3rem 0.5rem;
+}
+.overlayInner .description{
+  margin-top: 2rem;
+  text-align: justify;
+  font-size: 13px;
+
+}

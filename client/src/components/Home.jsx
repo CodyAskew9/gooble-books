@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Card from "./card";
 import axios from "axios"
-import CardTwo from "./CardTwo";
+
 
 
 const Home = () => {
