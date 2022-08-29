@@ -3,7 +3,6 @@ import Card from "./card";
 import axios from "axios"
 
 
-
 const Home = () => {
   const [search, setSearch]= useState("");
   const [bookData, setBookData]= useState([]);
@@ -20,7 +19,7 @@ const Home = () => {
     <>
     <div className="header">
       <div className="row1">
-        <h1>"When in doubt go to the liberry" <br/>
+        <h1>"When in doubt go to the library" <br/>
           -Hermione Granger</h1>
       </div>
       <div className="row2">
@@ -32,7 +31,7 @@ const Home = () => {
           <button>submit
           </button>
         </div>
-        {/* <CardTwo book= {bookData} /> */}
+        
       </div>
       
     </div>

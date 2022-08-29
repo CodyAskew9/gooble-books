@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { FaRegWindowClose } from "react-icons/fa";
 const Model = ({ show, item, onClose }) => {
   let [checkOut, setCheckOut] = useState("");
   const checkOutBook = (evt) => {
@@ -17,7 +17,7 @@ const Model = ({ show, item, onClose }) => {
       <div className="overlay">
         <div className="overlayInner">
           <button className="close" onClick={onClose}>
-            <i class="fas fa-times"></i>
+         <FaRegWindowClose />
           </button>
           <div className="inner-box">
             <img src={thumbnail} alt="" />
