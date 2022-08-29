@@ -3,25 +3,30 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { useBookContext } from "./bookContext";
 
 const Model = ({ show, item, onClose }) => {
-  const {checkOut, addToCheckOut} = useBookContext()
+  const {checkOut, addToCheckOut, student, name} = useBookContext()
+  const handleSubmit = (event) => { addToCheckOut(item.volumeInfo)
+    
+    event.preventDefault()
+  }
+  const handelInput = (e) => {student(e.target.value)
+
+    e.preventDefault()
   
 
-  // const checkOutBook = (evt) => {
-  //   if (evt.key === "Enter") {
-  //   }}
+}
   if (!show) {
     return null;
   }
   let thumbnail =
     item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
 
-    console.log(checkOut)
+    console.log(checkOut, name)
   return (
     <>
       <div className="overlay">
         <div className="overlayInner">
           <button className="close" onClick={onClose}>
-         <FaRegWindowClose />
+         <FaRegWindowClose />l
           </button>
           <div className="inner-box">
             <img src={thumbnail} alt="" />
@@ -32,15 +37,12 @@ const Model = ({ show, item, onClose }) => {
                 {item.volumeInfo.authors}
                 <span>{item.volumeInfo.authors}</span>
               </h4>
-              <br />
-              {/* <input
-                type="text"
-                placeholder="Enter Your Name"
-                value={checkOut}
-                onChange={(e) => checkOut(e.target.value)}
-                onKeyDown={checkOutBook}
-              /> */}
-              <button onClick={() => addToCheckOut(item.volumeInfo)}>Check Out</button>
+                <br />
+                <form onSubmit={handleSubmit}>
+              <input type="text" name="Enter Your Name" onSubmit={handelInput}  />
+              <input type="submit" />
+                </form>
+                  
             </div>
           </div>
           <h4 className="description">{item.volumeInfo.description}</h4>

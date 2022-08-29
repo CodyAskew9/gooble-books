@@ -38,7 +38,9 @@ const Home = () => {
     </div>
       <div className="container">
        { <Card book= {bookData}  />}
-       < CheckedOut />
+       <div className="row3">        
+       < CheckedOut book= {bookData}  />
+       </div>
       </div>
     </>
   );
