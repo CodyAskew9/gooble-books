@@ -1,5 +1,6 @@
 import Model from './Model'
 import React, { useState } from "react";
+import CheckedOut from './CheckedOut';
 
 const Card = ({ book }) => {
   // console.log(book)
@@ -20,6 +21,9 @@ const Card = ({ book }) => {
               </div>
             </div>
             <Model show={show} item={bookItem} onClose={() => setShow(false)}/>
+           <div className="checkedOut">
+
+           </div>
           </>
         );
       })}

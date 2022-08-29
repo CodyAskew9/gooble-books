@@ -1,4 +1,4 @@
-import { useContext, Context, createContext, useState } from "react";
+import { useContext, createContext, useState } from "react";
 
 const bookContext = createContext(null)
 
@@ -14,17 +14,28 @@ const BookContextProvider = ({children}) => {
     const [checkOut, setCheckOut] =useState([])
 
 
-    const addToCheckOut = () => {
+    const addToCheckOut = (book) => { 
+        const oldCheckOut = [...checkOut] 
+
+        const newCheckOut = oldCheckOut.concat(book)
+
+        setCheckOut(newCheckOut)
 
     }
 
     const returnBook =(id) => {
 
+        const oldCheckOut = [...checkOut]
+        const newCheckOut = oldCheckOut.filter((item) => item.id !== id)
+        
+        setCheckOut(newCheckOut)
+
     }
 
-    return ( <BookContext.Provider value={checkOut, addToCheckOut ,returnBook}>
+    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook}}>
         {children}
-    </BookContext.Provider>)
+    </bookContext.Provider>
+    )
 }
 
 export default BookContextProvider;

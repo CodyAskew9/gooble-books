@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaRegWindowClose } from "react-icons/fa";
+import { useBookContext } from "./bookContext";
+
 const Model = ({ show, item, onClose }) => {
-  let [checkOut, setCheckOut] = useState("");
-  const checkOutBook = (evt) => {
-    if (evt.key === "Enter") {
-      console.log(checkOut);
-    }}
+  const {checkOut, addToCheckOut} = useBookContext()
+  
+
+  // const checkOutBook = (evt) => {
+  //   if (evt.key === "Enter") {
+  //   }}
   if (!show) {
     return null;
   }
   let thumbnail =
     item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
 
+    console.log(checkOut)
   return (
     <>
       <div className="overlay">
@@ -29,14 +33,14 @@ const Model = ({ show, item, onClose }) => {
                 <span>{item.volumeInfo.authors}</span>
               </h4>
               <br />
-              <input
+              {/* <input
                 type="text"
                 placeholder="Enter Your Name"
                 value={checkOut}
-                onChange={(e) => setCheckOut(e.target.value)}
+                onChange={(e) => checkOut(e.target.value)}
                 onKeyDown={checkOutBook}
-              />
-              <button onClick={checkOutBook}>Check Out</button>
+              /> */}
+              <button onClick={() => addToCheckOut(item.volumeInfo)}>Check Out</button>
             </div>
           </div>
           <h4 className="description">{item.volumeInfo.description}</h4>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Card from "./card";
 import axios from "axios"
+import CheckedOut from "./CheckedOut";
 
 
 const Home = () => {
@@ -37,6 +38,7 @@ const Home = () => {
     </div>
       <div className="container">
        { <Card book= {bookData}  />}
+       < CheckedOut />
       </div>
     </>
   );
