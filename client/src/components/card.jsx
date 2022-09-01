@@ -1,11 +1,19 @@
 import Model from './Model'
 import React, { useState } from "react";
+import { useBookContext } from './bookContext';
+import { useEffect } from 'react';
 
 
 const Card = ({ book }) => {
   // console.log(book)
+  const {checkOut } = useBookContext()
   const [show, setShow] = useState(false);
   const [bookItem, setBookItem] = useState();
+
+  useEffect(()=> {
+    localStorage.setItem('checkout', JSON.stringify(checkOut))
+
+  },[checkOut])
   return (
     <>
       {book.map((item) => {

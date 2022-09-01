@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useBookContext } from './bookContext'
+
+
 
 const CheckedOut = ({ book }) => {
     const {checkOut, returnBook, name } = useBookContext()
-
+   
     return (
         <>
         {checkOut.length > 0 ? checkOut.map((item) => {
@@ -16,7 +18,7 @@ const CheckedOut = ({ book }) => {
                 <img src={thumbnail} alt="not found" />
                 <div className="bottom">
                   <h3 className="title">{item.title}</h3>
-                  <h4 className='name'>{name}</h4>
+                  <h4 className='name'>{name.fullName}</h4>
                   <button onClick={() => returnBook(item.id)}>Return</button>
                 </div>
               </div>

@@ -3,17 +3,12 @@ import { FaRegWindowClose } from "react-icons/fa";
 import { useBookContext } from "./bookContext";
 
 const Model = ({ show, item, onClose }) => {
-  const {checkOut, addToCheckOut, student, name} = useBookContext()
+  const {checkOut, addToCheckOut, setName, name} = useBookContext()
   const handleSubmit = (event) => { addToCheckOut(item.volumeInfo)
     
     event.preventDefault()
   }
-  const handelInput = (e) => {student(e.target.value)
 
-    e.preventDefault()
-  
-
-}
   if (!show) {
     return null;
   }
@@ -39,7 +34,7 @@ const Model = ({ show, item, onClose }) => {
               </h4>
                 <br />
                 <form onSubmit={handleSubmit}>
-              <input type="text" name="Enter Your Name" onSubmit={handelInput}  />
+              <input type="text" name="Enter Your Name" onChange={e => setName({fullName: e.target.value})}  />
               <input type="submit" />
                 </form>
                   
