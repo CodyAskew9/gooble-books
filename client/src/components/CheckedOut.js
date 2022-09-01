@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useBookContext } from './bookContext'
-
+import Kids from './Kids';
 
 
 const CheckedOut = ({ book }) => {
-    const {checkOut, returnBook, name } = useBookContext()
-   
+    const {checkOut, returnBook } = useBookContext()
     return (
         <>
         {checkOut.length > 0 ? checkOut.map((item) => {
@@ -14,11 +13,11 @@ const CheckedOut = ({ book }) => {
             item.imageLinks.smallThumbnail;
             return (
                 <>
-              <div className="card" key={item.id} >
+               <div className="card"  >
                 <img src={thumbnail} alt="not found" />
                 <div className="bottom">
                   <h3 className="title">{item.title}</h3>
-                  <h4 className='name'>{name.fullName}</h4>
+                  
                   <button onClick={() => returnBook(item.id)}>Return</button>
                 </div>
               </div>

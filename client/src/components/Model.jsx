@@ -1,10 +1,14 @@
+import e from "cors";
 import React from "react";
+import { useState } from "react";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useBookContext } from "./bookContext";
 
 const Model = ({ show, item, onClose }) => {
-  const {checkOut, addToCheckOut, setName, name} = useBookContext()
+  const { addToCheckOut, student} = useBookContext()
+  const [kid, setKid] = useState({ fullName:""})
   const handleSubmit = (event) => { addToCheckOut(item.volumeInfo)
+    student(kid)
     
     event.preventDefault()
   }
@@ -14,14 +18,12 @@ const Model = ({ show, item, onClose }) => {
   }
   let thumbnail =
     item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
-
-    console.log(checkOut, name)
   return (
     <>
       <div className="overlay">
         <div className="overlayInner">
           <button className="close" onClick={onClose}>
-         <FaRegWindowClose />l
+         <FaRegWindowClose />
           </button>
           <div className="inner-box">
             <img src={thumbnail} alt="" />
@@ -34,8 +36,8 @@ const Model = ({ show, item, onClose }) => {
               </h4>
                 <br />
                 <form onSubmit={handleSubmit}>
-              <input type="text" name="Enter Your Name" onChange={e => setName({fullName: e.target.value})}  />
-              <input type="submit" />
+              <input type="text" name="Enter Your Name" onChange={e => setKid({fullName: e.target.value})}  />
+              <input type="submit"  />
                 </form>
                   
             </div>

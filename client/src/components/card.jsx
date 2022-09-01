@@ -10,10 +10,7 @@ const Card = ({ book }) => {
   const [show, setShow] = useState(false);
   const [bookItem, setBookItem] = useState();
 
-  useEffect(()=> {
-    localStorage.setItem('checkout', JSON.stringify(checkOut))
-
-  },[checkOut])
+ 
   return (
     <>
       {book.map((item) => {
