@@ -1,14 +1,14 @@
-import e from "cors";
+
 import React from "react";
 import { useState } from "react";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useBookContext } from "./bookContext";
 
 const Model = ({ show, item, onClose }) => {
-  const { addToCheckOut, student} = useBookContext()
-  const [kid, setKid] = useState({ fullName:""})
+  const { addToCheckOut, setName} = useBookContext()
+ 
   const handleSubmit = (event) => { addToCheckOut(item.volumeInfo)
-    student(kid)
+   
     
     event.preventDefault()
   }
@@ -36,7 +36,7 @@ const Model = ({ show, item, onClose }) => {
               </h4>
                 <br />
                 <form onSubmit={handleSubmit}>
-              <input type="text" name="Enter Your Name" onChange={e => setKid({fullName: e.target.value})}  />
+              <input type="text" name="Enter Your Name" onChange={e => setName({fullName:e.target.value})}  />
               <input type="submit"  />
                 </form>
                   

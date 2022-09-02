@@ -1,10 +1,16 @@
 import React from 'react'
 import { useBookContext } from './bookContext'
-import Kids from './Kids';
+
 
 
 const CheckedOut = ({ book }) => {
-    const {checkOut, returnBook } = useBookContext()
+    const {checkOut, returnBook, name } = useBookContext()
+
+  const returnChecker = (id) => {
+    const boolean = checkOut.some((book) => book.id ===id)
+    return boolean
+console.log(name)
+  }
     return (
         <>
         {checkOut.length > 0 ? checkOut.map((item) => {
@@ -17,8 +23,9 @@ const CheckedOut = ({ book }) => {
                 <img src={thumbnail} alt="not found" />
                 <div className="bottom">
                   <h3 className="title">{item.title}</h3>
-                  
-                  <button onClick={() => returnBook(item.id)}>Return</button>
+                  <h3>{name}</h3>
+                  {returnChecker(book.id) ? ( <button onClick={() => returnBook(book.id)}>Return</button>)
+                  : (<h3>nothing here</h3>)}
                 </div>
               </div>
              
