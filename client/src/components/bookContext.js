@@ -15,12 +15,12 @@ return context
 const BookContextProvider = ({children}) => {
     const [checkOut, setCheckOut] =useState(checkOutLocalStorage)
     // const [name, setName] =useState(kidsLocalStorage)
-    const [kid, setKid] = useState([{fullName:""}])
+  
 
 
-    const addToCheckOut = (book) => { 
+    const addToCheckOut = (book, kid) => { 
         const oldCheckOut = [...checkOut] 
-        const newCheckOut = oldCheckOut.concat(book) 
+        const newCheckOut = oldCheckOut.concat(book, kid) 
         // const oldStudent = [...name,] 
         // const newStudent = oldStudent.concat(kid)
         setCheckOut(newCheckOut)
@@ -54,7 +54,7 @@ const BookContextProvider = ({children}) => {
     //   },[name])
    
 
-    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook, setKid }}>
+    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook }}>
         {children}
     </bookContext.Provider>
     )

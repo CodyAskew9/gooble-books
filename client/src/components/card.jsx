@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 
 const Card = ({ book }) => {
   // console.log(book)
+
   const [show, setShow] = useState(false);
   const [bookItem, setBookItem] = useState();
 

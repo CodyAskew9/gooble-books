@@ -20,7 +20,7 @@ const Home = () => {
     <>
     <div className="header">
       <div className="row1">
-        <h1>"When in doubt, go to the liberry." <br/>
+        <h1>"When in doubt, go to the library." <br/>
           -Hermione Granger</h1>
       </div>
       <div className="row2">

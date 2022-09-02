@@ -4,12 +4,11 @@ import { useBookContext } from './bookContext'
 
 
 const CheckedOut = ({ book }) => {
-    const {checkOut, returnBook, name } = useBookContext()
+    const {checkOut, returnBook, kid } = useBookContext()
 
   const returnChecker = (id) => {
     const boolean = checkOut.some((book) => book.id ===id)
     return boolean
-console.log(name)
   }
     return (
         <>
@@ -23,7 +22,6 @@ console.log(name)
                 <img src={thumbnail} alt="not found" />
                 <div className="bottom">
                   <h3 className="title">{item.title}</h3>
-                  <h3>{name}</h3>
                   {returnChecker(book.id) ? ( <button onClick={() => returnBook(book.id)}>Return</button>)
                   : (<h3>nothing here</h3>)}
                 </div>
