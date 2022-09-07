@@ -11,5 +11,12 @@ const Schema = new Schema({
     },
     description: { type: String},
     image: { type: String},
-    link: { type: String}
+    link: { type: String},
+    publisher: {type : String},
+    publishedDate: {type : String},
+    dateAdded: {type: Date, default : Date.now},
+    kid :{type: String}
 })
+
+const Book = new mongoose.model("Book", BookSchema);
+module.exports = Book
