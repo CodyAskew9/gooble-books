@@ -1,21 +1,23 @@
-
 import React from "react";
 import { useState } from "react";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useBookContext } from "./bookContext";
+import Kids from "./Kids";
 
 const Model = ({ show, item, onClose }) => {
-  const { addToCheckOut} = useBookContext()
-  const [kid, setKid] = useState({ fullName:""})
-  const handleSubmit = (event) => { addToCheckOut(item.volumeInfo, kid)
-   
-    
-    event.preventDefault()
+  const { addToCheckOut, student} = useBookContext()
+  const [names, setNames] = useState("")
+  const handleSubmit = (e) => { addToCheckOut(item.volumeInfo)
+    console.log(names)
+    student(names)
+    e.preventDefault()
   }
 
   if (!show) {
     return null;
   }
+
+ 
   let thumbnail =
     item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
   return (
@@ -36,10 +38,9 @@ const Model = ({ show, item, onClose }) => {
               </h4>
                 <br />
                 <form onSubmit={handleSubmit}>
-              <input type="text" name="Enter Your Name" onChange={e => setKid({fullName: e.target.value})}  />
+              <input type="text" name="Enter Your Name" value={names} onChange={(e) => setNames(e.target.value)} />
               <input type="submit"  />
-                </form>
-                  
+                </form>   
             </div>
           </div>
           <h4 className="description">{item.volumeInfo.description}</h4>

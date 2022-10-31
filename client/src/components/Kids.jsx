@@ -1,22 +1,24 @@
 import React from 'react'
 import { useContext } from 'react'
 
-const Kids = (kid) => {
+const Kids = ({names}) => {
        const {name} = useContext()
   return (  
     <>
-     {name.length > 0 ? name.map((kid) => {
+     {name.length > 0 ? name.map((names) => {
            
             return (
                 <>
-               <div className="kids">
-                     <h3>{kid.fullName}</h3>
+               <div>
+                     <h3>{names.text}</h3>
                </div>
                </>
             )
      }):<h4>no names found</h4>}
+     <div>
+     </div>
     </>
   )
-}
+} 
 
 export default Kids

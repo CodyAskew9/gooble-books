@@ -1,7 +1,6 @@
 import Model from './Model'
 import React, { useState } from "react";
-import { useBookContext } from './bookContext';
-import { useEffect } from 'react';
+
 
 
 const Card = ({ book }) => {

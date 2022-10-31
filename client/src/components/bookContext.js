@@ -3,7 +3,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 const bookContext = createContext(null)
 
 const checkOutLocalStorage = JSON.parse(localStorage.getItem('checkout') || "[]")
-// const kidsLocalStorage = JSON.parse(localStorage.getItem('kids') || "[]")
+const kidsLocalStorage = JSON.parse(localStorage.getItem('name') || "[]")
 export const useBookContext = () => {
 const context = useContext(bookContext)
 if(context === undefined)
@@ -14,26 +14,26 @@ return context
 
 const BookContextProvider = ({children}) => {
     const [checkOut, setCheckOut] =useState(checkOutLocalStorage)
-    // const [name, setName] =useState(kidsLocalStorage)
+    const [name, setName] =useState(kidsLocalStorage)
   
 
 
-    const addToCheckOut = (book, kid) => { 
+    const addToCheckOut = (book) => { 
         const oldCheckOut = [...checkOut] 
-        const newCheckOut = oldCheckOut.concat(book, kid) 
+        const newCheckOut = oldCheckOut.concat(book) 
         // const oldStudent = [...name,] 
         // const newStudent = oldStudent.concat(kid)
         setCheckOut(newCheckOut)
         // setName(newStudent)
 
     }
-    // const student = (kid) => { 
-    //     const oldStudent = [...name,] 
-    //     const newStudent = oldStudent.concat(kid)
+    const student = (names) => { 
+        const oldStudent = [...name,] 
+        const newStudent = oldStudent.concat(names)
 
-    //     setName(newStudent)
+        setName(newStudent)
 
-    // }
+    }
 
     const returnBook =(id) => {
 
@@ -48,13 +48,13 @@ const BookContextProvider = ({children}) => {
         localStorage.setItem('checkout', JSON.stringify(checkOut))
     
       },[checkOut])
-    // useEffect(()=> {
-    //     localStorage.setItem('kids', JSON.stringify(name))
+    useEffect(()=> {
+        localStorage.setItem("name", JSON.stringify(name))
     
-    //   },[name])
+      },[name])
    
 
-    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook }}>
+    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook, student, name,}}>
         {children}
     </bookContext.Provider>
     )
