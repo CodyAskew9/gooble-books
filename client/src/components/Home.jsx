@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Card from "./card";
 import axios from "axios"
 import CheckedOut from "./CheckedOut";
-import Kids from "./Kids";
+
 
 
 const Home = () => {
