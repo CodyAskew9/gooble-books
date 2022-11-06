@@ -35,10 +35,10 @@ const BookContextProvider = ({children}) => {
 
     // }
 
-    const returnBook =(id) => {
+    const returnBook =(title) => {
 
         const oldCheckOut = [...checkOut]
-        const newCheckOut = oldCheckOut.filter((item) => item.book.id !== id)
+        const newCheckOut = oldCheckOut.filter((item) => item.book.title !== title)
         
         setCheckOut(newCheckOut)
 

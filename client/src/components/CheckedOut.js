@@ -7,8 +7,8 @@ import { useBookContext } from './bookContext'
 const CheckedOut = ({ book }) => {
     const {checkOut, returnBook} = useBookContext()
 
-  const returnChecker = (id) => {
-    const boolean = checkOut.some((book) => book.id ===id)
+  const returnChecker = (title) => {
+    const boolean = checkOut.some((item) => item.book.title === title)
     return boolean
   }
     return (
@@ -24,7 +24,7 @@ const CheckedOut = ({ book }) => {
                 <div className="bottom">
                   <h3 className="title">{item.book.title}</h3>
                   <h3 className='kid'>{item.kid}</h3>
-                  {returnChecker(item.id) ? ( <button onClick={() => returnBook(item.id)}>Return</button>)
+                  {returnChecker(item.book.title) ? ( <button onClick={() => returnBook(item.book.title)}>Return</button>)
                   : (<h3>nothing here</h3>)}
                 </div>
 
