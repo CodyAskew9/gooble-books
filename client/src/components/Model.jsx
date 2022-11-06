@@ -2,14 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { FaRegWindowClose } from "react-icons/fa";
 import { useBookContext } from "./bookContext";
-import Kids from "./Kids";
+
 
 const Model = ({ show, item, onClose }) => {
   const { addToCheckOut, student} = useBookContext()
-  const [names, setNames] = useState("")
-  const handleSubmit = (e) => { addToCheckOut(item.volumeInfo)
+  const [names, setNames] = useState({kid : "" , book: ""})
+  const handleSubmit = (e) => { addToCheckOut(names)
     console.log(names)
-    student(names)
+ 
     e.preventDefault()
   }
 
@@ -38,7 +38,7 @@ const Model = ({ show, item, onClose }) => {
               </h4>
                 <br />
                 <form onSubmit={handleSubmit}>
-              <input type="text" name="Enter Your Name" value={names} onChange={(e) => setNames(e.target.value)} />
+              <input type="text" name="Enter Your Name" value={names.kid} onChange={(e) => setNames({kid : e.target.value , book: item.volumeInfo})} />
               <input type="submit"  />
                 </form>   
             </div>

@@ -3,7 +3,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 const bookContext = createContext(null)
 
 const checkOutLocalStorage = JSON.parse(localStorage.getItem('checkout') || "[]")
-const kidsLocalStorage = JSON.parse(localStorage.getItem('name') || "[]")
+// const kidsLocalStorage = JSON.parse(localStorage.getItem('name') || "[]")
 export const useBookContext = () => {
 const context = useContext(bookContext)
 if(context === undefined)
@@ -14,7 +14,7 @@ return context
 
 const BookContextProvider = ({children}) => {
     const [checkOut, setCheckOut] =useState(checkOutLocalStorage)
-    const [name, setName] =useState(kidsLocalStorage)
+    // const [name, setName] =useState(kidsLocalStorage)
   
 
 
@@ -27,18 +27,18 @@ const BookContextProvider = ({children}) => {
         // setName(newStudent)
 
     }
-    const student = (names) => { 
-        const oldStudent = [...name,] 
-        const newStudent = oldStudent.concat(names)
+    // const student = (names) => { 
+    //     const oldStudent = [...name,] 
+    //     const newStudent = oldStudent.concat(names)
 
-        setName(newStudent)
+    //     setName(newStudent)
 
-    }
+    // }
 
     const returnBook =(id) => {
 
         const oldCheckOut = [...checkOut]
-        const newCheckOut = oldCheckOut.filter((item) => item.id !== id)
+        const newCheckOut = oldCheckOut.filter((item) => item.book.id !== id)
         
         setCheckOut(newCheckOut)
 
@@ -48,13 +48,13 @@ const BookContextProvider = ({children}) => {
         localStorage.setItem('checkout', JSON.stringify(checkOut))
     
       },[checkOut])
-    useEffect(()=> {
-        localStorage.setItem("name", JSON.stringify(name))
+    // useEffect(()=> {
+    //     localStorage.setItem("name", JSON.stringify(name))
     
-      },[name])
+    //   },[name])
    
 
-    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook, student, name,}}>
+    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook,}}>
         {children}
     </bookContext.Provider>
     )

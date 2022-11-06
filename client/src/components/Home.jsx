@@ -40,7 +40,7 @@ const Home = () => {
       
     </div>
       <div className="container">
-       { <Card book= {bookData}  />}       
+       <Card book= {bookData}  />       
        < CheckedOut book= {bookData}  />
   
        </div>

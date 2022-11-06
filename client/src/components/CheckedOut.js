@@ -15,14 +15,15 @@ const CheckedOut = ({ book }) => {
         <>
         {checkOut.length > 0 ? checkOut.map((item) => {
             let thumbnail =
-            item.imageLinks &&
-            item.imageLinks.smallThumbnail;
+            item.book.imageLinks &&
+            item.book.imageLinks.smallThumbnail;
             return (
                 <>
                <div className="card" key={item.id} >
                 <img src={thumbnail} alt="not found" />
                 <div className="bottom">
-                  <h3 className="title">{item.title}</h3>
+                  <h3 className="title">{item.book.title}</h3>
+                  <h3 className='kid'>{item.kid}</h3>
                   {returnChecker(item.id) ? ( <button onClick={() => returnBook(item.id)}>Return</button>)
                   : (<h3>nothing here</h3>)}
                 </div>
