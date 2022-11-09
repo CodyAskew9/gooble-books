@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Card from "./card";
 import axios from "axios"
 import CheckedOut from "./CheckedOut";
+import NotFound from "./NotFound";
 
 
 
@@ -12,13 +13,13 @@ const Home = () => {
      axios.get("https://www.googleapis.com/books/v1/volumes?q=:"+search+":keyes&key=AIzaSyBMzZS3hTqxyJMIFq0cxpTCJ8kOp3Y4Qbw")
      .then(res=> setBookData(res.data.items))
      .catch(err=> console.log(err))
-
      event.preventDefault()
     }
   
   return (
     
     <>
+    <NotFound />
     <div className="header">
       <div className="row1">
         <h1>"When in doubt, go to the library." <br/>
@@ -42,8 +43,8 @@ const Home = () => {
       <div className="container">
        <Card book= {bookData}  />       
        < CheckedOut book= {bookData}  />
-  
        </div>
+      
     </>
   );
 };

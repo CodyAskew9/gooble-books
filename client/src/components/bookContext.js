@@ -3,7 +3,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 const bookContext = createContext(null)
 
 const checkOutLocalStorage = JSON.parse(localStorage.getItem('checkout') || "[]")
-// const kidsLocalStorage = JSON.parse(localStorage.getItem('name') || "[]")
+const kidsLocalStorage = JSON.parse(localStorage.getItem('name') || "[]")
 export const useBookContext = () => {
 const context = useContext(bookContext)
 if(context === undefined)
@@ -14,27 +14,27 @@ return context
 
 const BookContextProvider = ({children}) => {
     const [checkOut, setCheckOut] =useState(checkOutLocalStorage)
-    // const [name, setName] =useState(kidsLocalStorage)
+    const [name, setName] =useState(kidsLocalStorage)
   
 
 
     const addToCheckOut = (book) => { 
         const oldCheckOut = [...checkOut] 
         const newCheckOut = oldCheckOut.concat(book) 
-        // const oldStudent = [...name,] 
-        // const newStudent = oldStudent.concat(kid)
+        
         setCheckOut(newCheckOut)
-        // setName(newStudent)
+       
 
     }
-    // const student = (names) => { 
-    //     const oldStudent = [...name,] 
-    //     const newStudent = oldStudent.concat(names)
+    const notFoundCheckOut = (book) => { 
+        const oldName = [...name] 
+        const newName = oldName.concat(book) 
+        
+        setName(newName)
+       
 
-    //     setName(newStudent)
-
-    // }
-
+    }
+   
     const returnBook =(title) => {
 
         const oldCheckOut = [...checkOut]
@@ -43,18 +43,26 @@ const BookContextProvider = ({children}) => {
         setCheckOut(newCheckOut)
 
     }
+    const returnBookTwo =(title) => {
+
+        const oldName = [...name]
+        const newName = oldName.filter((item) => item.notFoundInfo !== title)
+        
+        setName(newName)
+
+    }
    
     useEffect(()=> {
         localStorage.setItem('checkout', JSON.stringify(checkOut))
     
       },[checkOut])
-    // useEffect(()=> {
-    //     localStorage.setItem("name", JSON.stringify(name))
+    useEffect(()=> {
+        localStorage.setItem("name", JSON.stringify(name))
     
-    //   },[name])
+      },[name])
    
 
-    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook,}}>
+    return ( <bookContext.Provider value={{checkOut, addToCheckOut, returnBook, returnBookTwo, notFoundCheckOut, name}}>
         {children}
     </bookContext.Provider>
     )
